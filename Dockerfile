@@ -5,22 +5,16 @@ RUN apt-get update && apt-get install -y libzip-dev unzip libonig-dev \
 RUN apt-get update && \
     apt-get install -y libicu-dev && \
     docker-php-ext-install intl
-RUN apt-get update && apt-get install -y \
-    libicu-dev \
-    libzip-dev \
-    libbz2-dev \
-    libcurl4-openssl-dev \
-    libxml2-dev \
-    unzip \
-    libsqlite3-dev \
-    libonig-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libwebp-dev \
-    libxpm-dev \
-    libfreetype6-dev \
-    libgettextpo-dev \
-    && docker-php-ext-install intl bz2 curl fileinfo gettext exif mysqli pdo pdo_mysql pdo_sqlite zip
+RUN docker-php-ext-install bz2
+RUN docker-php-ext-install curl
+RUN docker-php-ext-install fileinfo
+RUN docker-php-ext-install gettext
+RUN docker-php-ext-install exif
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_sqlite
+RUN docker-php-ext-install zip
 
 RUN a2enmod rewrite
 

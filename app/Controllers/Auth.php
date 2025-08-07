@@ -10,6 +10,11 @@ class Auth extends Controller
     public function login()
     {
         helper(['form']);
+        $session = session();
+
+        if ($session->get('logged_in')) {
+            return redirect()->to('/dashboard/' . $session->get('level'));
+        }
         return view('login_form');
     }
 
@@ -17,6 +22,12 @@ class Auth extends Controller
     {
         $session = session();
         $model = new UserModel();
+
+        $session = session();
+
+        if ($session->get('logged_in')) {
+            return redirect()->to('/dashboard/' . $session->get('level'));
+        }
 
         $username = $this->request->getPost('username');
         $password = md5($this->request->getPost('password')); // demo only

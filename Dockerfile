@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y libzip-dev unzip libonig-dev \
 RUN apt-get update && \
     apt-get install -y libicu-dev && \
     docker-php-ext-install intl
-RUN docker-php-ext-install bz2
 RUN docker-php-ext-install curl
 RUN docker-php-ext-install fileinfo
 RUN docker-php-ext-install gettext

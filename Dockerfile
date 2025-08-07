@@ -2,6 +2,25 @@ FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y libzip-dev unzip libonig-dev \
     && docker-php-ext-install pdo pdo_mysql zip mbstring
+RUN apt-get update && \
+    apt-get install -y libicu-dev && \
+    docker-php-ext-install intl
+RUN apt-get update && apt-get install -y \
+    libicu-dev \
+    libzip-dev \
+    libbz2-dev \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    unzip \
+    libsqlite3-dev \
+    libonig-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libwebp-dev \
+    libxpm-dev \
+    libfreetype6-dev \
+    libgettextpo-dev \
+    && docker-php-ext-install intl bz2 curl fileinfo gettext exif mysqli pdo pdo_mysql pdo_sqlite zip
 
 RUN a2enmod rewrite
 

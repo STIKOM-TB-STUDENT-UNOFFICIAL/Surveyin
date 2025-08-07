@@ -6,14 +6,10 @@ RUN apt-get update && \
     apt-get install -y libicu-dev libcurl4-openssl-dev && \
     docker-php-ext-install intl
 RUN docker-php-ext-install curl
-RUN docker-php-ext-install fileinfo
-RUN docker-php-ext-install gettext
-RUN docker-php-ext-install exif
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install pdo_sqlite
-RUN docker-php-ext-install zip
 
 RUN a2enmod rewrite
 

@@ -10,4 +10,7 @@ COPY php.ini /usr/local/etc/php/
 
 COPY . /var/www/html
 
+RUN chown -R www-data:www-data /var/www/html/writable \
+    && chmod -R 777 /var/www/html/writable
+
 WORKDIR /var/www/html

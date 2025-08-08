@@ -17,9 +17,9 @@ $currentPath = service('uri')->getPath();
             </a>
         </li>
         <li class="nav-item">
-            <a href="/dashboard/Mahasiswa/survey-dosen" class="nav-link <?= $currentPath == '/dashboard/Mahasiswa/survey-dosen' ? 'active' : '' ?>">
-                <i class="nav-icon bi bi-people"></i>
-                <p>Survey Dosen</p>
+            <a href="/dashboard/Mahasiswa/survey-visi-misi" class="nav-link <?= $currentPath == '/dashboard/Mahasiswa/survey-visi-misi' ? 'active' : '' ?>">
+                <i class="nav-icon bi bi-person-badge"></i>
+                <p>Survey Visi Misi</p>
             </a>
         </li>
         <li class="nav-item">
@@ -29,9 +29,9 @@ $currentPath = service('uri')->getPath();
             </a>
         </li>
         <li class="nav-item">
-            <a href="/dashboard/Mahasiswa/survey-tenaga-pendidik" class="nav-link <?= $currentPath == '/dashboard/Mahasiswa/survey-tenaga-pendidik' ? 'active' : '' ?>">
-                <i class="nav-icon bi bi-person-badge"></i>
-                <p>Survey Tenaga Pendidik</p>
+            <a href="/dashboard/Mahasiswa/survey-dosen" class="nav-link <?= $currentPath == '/dashboard/Mahasiswa/survey-dosen' ? 'active' : '' ?>">
+                <i class="nav-icon bi bi-people"></i>
+                <p>Survey Dosen</p>
             </a>
         </li>
         <li class="nav-item">

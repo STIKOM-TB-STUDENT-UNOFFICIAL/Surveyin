@@ -57,9 +57,12 @@ $labels = [
                 <?php else: ?>
                     <div class="card-body">
                         <form action="/dashboard/Mahasiswa/survey-prasarana" method="post">
+                            <?php
+                                $c = 1;
+                            ?>
                             <?php foreach ($pertanyaan as $q): ?>
                                 <div class="form-group mt-3">
-                                    <label><?= esc($q->Pertanyaan) ?></label>
+                                    <label><?=$c?>. <?= esc($q->Pertanyaan) ?></label>
                                     <div class="d-flex flex-column flex-lg-row gap-3 mt-2">
                                         <?php foreach ($labels as $i => $label): ?>
                                             <div class="form-check me-lg-3">
@@ -72,6 +75,7 @@ $labels = [
                                     </div>
                                 </div>
                                 <hr>
+                                <?php $c++?>
                             <?php endforeach; ?>
                             <button type="submit" class="btn btn-primary">Kirim Survey</button>
                         </form>

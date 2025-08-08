@@ -64,17 +64,19 @@ $labels = [
                                     <?php foreach ($dosenList as $d): ?>
                                         <?php $value = $d->NID . '|' . $d->KdMk . '|' . $d->ThnAjaran; ?>
                                         <option value="<?= esc($value) ?>">
-                                            <?= esc($d->Nama) ?> (<?= esc($d->KdMk) ?> <?= esc($d->ThnAjaran) ?>)
+                                            <?= esc($d->Nama) ?>  [<?= $d->NmMk ? esc($d->NmMk) : esc($d->KdMk) ?>] (<?= esc($d->ThnAjaran) ?>)
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
 
                             <hr>
-
+                            <?php
+                                $c = 1;
+                            ?>
                             <?php foreach ($pertanyaan as $q): ?>
                                 <div class="form-group">
-                                    <label><?= esc($q->pertanyaan) ?></label>
+                                    <label><?=$c?>. <?= esc($q->pertanyaan) ?></label>
                                     <div class="d-flex flex-column flex-lg-row gap-3 mt-2">
                                         <?php foreach ($labels as $i => $label): ?>
                                             <div class="form-check me-lg-3">
@@ -87,6 +89,7 @@ $labels = [
                                     </div>
                                 </div>
                                 <hr>
+                                <?php $c++?>
                             <?php endforeach; ?>
                             <button type="submit" class="btn btn-primary">Kirim Survey</button>
                         </form>

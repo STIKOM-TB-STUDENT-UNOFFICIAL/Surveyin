@@ -23,18 +23,17 @@ class SurveyMahasiswa extends Controller
         $user = $db->table('users')->where('username', $username)->get()->getRow();
         $kdKelas = $user->KdKelas;
 
-        $dosenQuery = $db->query("
-            SELECT d.NID, d.Nama, mk.KdMk, mk.ThnAjaran
-            FROM matriks mk
+        $dosenQuery = $db->query("SELECT DISTINCT d.NID, d.Nama, mk.KdMk, mk.ThnAjaran, m.NmMk
+	        FROM matriks mk
             JOIN dosen d ON mk.KdDosen = d.NID
+            LEFT JOIN matakuliah m ON m.KdMk = mk.KdMK
             WHERE mk.kdKelas = ?
             AND d.NID NOT IN (
                 SELECT hs.NID FROM hasil hs WHERE hs.NIM = ?
                 AND hs.NID = mk.KdDosen
                 AND hs.KdMatakuliah = mk.KdMk
                 AND hs.TahunAkademik = mk.ThnAjaran
-            )
-        ", [$kdKelas, $username]);
+            )", [$kdKelas, $username]);
 
         $dosenList = $dosenQuery->getResult();
 
@@ -169,7 +168,7 @@ class SurveyMahasiswa extends Controller
         return redirect()->to('/dashboard/Mahasiswa/survey-prasarana')->with('success', 'Survey berhasil dikirim.');
     }
 
-    public function tenagaPendidik()
+    public function visiMisi()
     {
         $session = session();
         $username = $session->get('username');
@@ -194,12 +193,41 @@ class SurveyMahasiswa extends Controller
 
         $sudahIsi = $answered >= count($kuisioner);
 
-        return view('survey/mahasiswa/tenaga_pendidik', [
+        return view('survey/mahasiswa/visi_misi', [
             'username' => $session->get('username'),
             'semester' => $session->get('semester'),
             'level'    => $session->get('level'),
             'sudahIsi'   => $sudahIsi,
             'pertanyaan' => $kuisioner
         ]);
+    }
+
+    public function submitVisiMisi()
+    {
+        $session = session();
+        $username = $session->get('username');
+        $semester = $session->get('semester');
+
+        $post = $this->request->getPost();
+
+        if (empty($post['jawaban']) || !is_array($post['jawaban'])) {
+            return redirect()->back()->with('error', 'Form tidak lengkap.');
+        }
+
+        $builder = db_connect()->table('hasil');
+
+        foreach ($post['jawaban'] as $idKuisioner => $jawaban) {
+            $builder->insert([
+                'NIM'           => $username,
+                'semester'      => $semester,
+                'NID'           => "",
+                'KdMatakuliah'  => "",
+                'TahunAkademik' => "",
+                'KdKuisioner'   => $idKuisioner,
+                'Nilai'         => $jawaban,
+            ]);
+        }
+
+        return redirect()->to('/dashboard/Mahasiswa/visi-misi')->with('success', 'Survey berhasil dikirim.');
     }
 }

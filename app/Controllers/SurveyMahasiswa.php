@@ -228,6 +228,6 @@ class SurveyMahasiswa extends Controller
             ]);
         }
 
-        return redirect()->to('/dashboard/Mahasiswa/visi-misi')->with('success', 'Survey berhasil dikirim.');
+        return redirect()->to('/dashboard/Mahasiswa/survey-visi-misi')->with('success', 'Survey berhasil dikirim.');
     }
 }

@@ -4,7 +4,7 @@
 $labels = [
     1 => 'Sangat Tidak Setuju',
     2 => 'Tidak Setuju',
-    3 => 'Netral',
+    3 => 'Cukup Setuju',
     4 => 'Setuju',
     5 => 'Sangat Setuju',
 ];

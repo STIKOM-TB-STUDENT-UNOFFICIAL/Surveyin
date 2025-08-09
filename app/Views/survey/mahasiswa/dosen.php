@@ -2,11 +2,11 @@
 
 <?php
 $labels = [
-    1 => 'Sangat Tidak Setuju',
-    2 => 'Tidak Setuju',
-    3 => 'Netral',
-    4 => 'Setuju',
-    5 => 'Sangat Setuju',
+    1 => 'Sangat Buruk',
+    2 => 'Buruk',
+    3 => 'Cukup Baik',
+    4 => 'Baik',
+    5 => 'Sangat Baik',
 ];
 ?>
 <?= $this->section("content") ?>

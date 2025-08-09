@@ -56,7 +56,7 @@ $labels = [
                     </div>
                 <?php else: ?>
                     <div class="card-body">
-                        <form action="/dashboard/Mahasiswa/survey-prasarana" method="post">
+                        <form action="/dashboard/Mahasiswa/survey-visi-misi" method="post">
                             <?php
                                 $c = 1;
                             ?>
